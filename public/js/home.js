@@ -42,16 +42,32 @@ window.addEventListener('DOMContentLoaded', () => {
         const resp = document.getElementById(respId);
         if (!btn || !input || !resp) return;
 
+        async function askAI(question, respEl) {
+            respEl.textContent = 'در حال پاسخ‌گویی...';
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: question })
+                });
+                const reader = res.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let fullText = '';
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    fullText += decoder.decode(value);
+                    respEl.textContent = fullText; // تایپ لحظه‌ای
+                }
+            } catch (e) {
+                respEl.textContent = 'خطا در دریافت پاسخ!';
+            }
+        }
+
         btn.onclick = () => {
             const q = input.value.trim();
-            if (!q) {
-                resp.textContent = 'سؤال خود را وارد کنید!';
-                return;
-            }
-            resp.textContent = 'در حال بررسی…';
-            setTimeout(() => {
-                resp.textContent = 'این فقط یک پاسخ آزمایشی است. سیستم مشاوره به‌زودی فعال می‌شود!';
-            }, 1500);
+            if (!q) { resp.textContent = 'سؤال خود را وارد کنید!'; return; }
+            askAI(q, resp);
         };
     }
 
@@ -285,16 +301,31 @@ function setupAIBox() {
     const aiInput = document.getElementById("ai-question");
     const aiResp = document.getElementById("ai-response");
     if (aiBtn && aiInput && aiResp) {
-        aiBtn.onclick = () => {
+        aiBtn.onclick = async () => {
             const question = aiInput.value.trim();
             if (!question) {
                 aiResp.textContent = "سؤال خود را وارد کنید!";
                 return;
             }
-            aiResp.textContent = "در حال بررسی...";
-            setTimeout(() => {
-                aiResp.textContent = "این فقط یک پاسخ آزمایشی است. سیستم مشاوره به‌زودی فعال می‌شود!";
-            }, 1500);
+            aiResp.textContent = 'در حال پاسخ‌گویی...';
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: question })
+                });
+                const reader = res.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let fullText = '';
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    fullText += decoder.decode(value);
+                    aiResp.textContent = fullText;
+                }
+            } catch (e) {
+                aiResp.textContent = 'خطا در دریافت پاسخ!';
+            }
         };
     }
 }
