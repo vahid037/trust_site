@@ -44,14 +44,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         btn.onclick = () => {
             const q = input.value.trim();
-            if (!q) {
-                resp.textContent = 'سؤال خود را وارد کنید!';
-                return;
-            }
-            resp.textContent = 'در حال بررسی…';
-            setTimeout(() => {
-                resp.textContent = 'این فقط یک پاسخ آزمایشی است. سیستم مشاوره به‌زودی فعال می‌شود!';
-            }, 1500);
+            if (!q) { resp.textContent = 'سؤال خود را وارد کنید!'; return; }
+            askAI(q, resp);
         };
     }
 
@@ -287,14 +281,8 @@ function setupAIBox() {
     if (aiBtn && aiInput && aiResp) {
         aiBtn.onclick = () => {
             const question = aiInput.value.trim();
-            if (!question) {
-                aiResp.textContent = "سؤال خود را وارد کنید!";
-                return;
-            }
-            aiResp.textContent = "در حال بررسی...";
-            setTimeout(() => {
-                aiResp.textContent = "این فقط یک پاسخ آزمایشی است. سیستم مشاوره به‌زودی فعال می‌شود!";
-            }, 1500);
+            if (!question) { aiResp.textContent = 'سؤال خود را وارد کنید!'; return; }
+            askAI(question, aiResp);
         };
     }
 }
