@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const OpenAI = require('openai').default; // v4 SDK
+const OpenAI = require('openai'); // v4 SDK
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const app = express();
