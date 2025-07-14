@@ -1,0 +1,1159 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+/* ==== Base ==== */
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: #fafbfc;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    color: #333;
+}
+
+/* ===== HERO HEADER ===== */
+.hero-header {
+    position: relative;
+    height: clamp(180px, 45vh, 430px); /* سیّال */
+    overflow: hidden;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* تصویر کمی از بالا کات میشه تو موبایل */
+    min-height: 330px;
+    max-height: 470px;
+    filter: brightness(0.81) saturate(1.05);
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(30,30,33,0.17) 13%, rgba(255,255,255,0.02) 87%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* منو و لوگو */
+.hero-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 28px 4vw 0 4vw;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 32px;
+    background: rgba(0,0,0,0.17);
+    border-radius: 14px;
+    padding: 8px 30px;
+    margin: 0;
+    list-style: none;
+}
+
+.main-nav a, .dropbtn {
+    color: #fff;
+    font-size: 17px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color .18s;
+    text-decoration: none;
+}
+
+    .main-nav a:hover, .dropbtn:hover {
+        color: #ffd6e1;
+    }
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    min-width: 160px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.09);
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+    .dropdown-content a {
+        color: #303034;
+        padding: 10px 14px;
+        display: block;
+        text-decoration: none;
+        border-radius: 7px;
+        transition: background .18s;
+    }
+
+        .dropdown-content a:hover {
+            background: #f2f2f7;
+        }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover {
+        display: block;
+    }
+
+/* لوگو */
+.hero-logo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-left: 40px;
+    margin-top: -24px;
+}
+
+.site-logo-large {
+    width: 90px;
+    height: auto;
+    filter: drop-shadow(0 3px 12px rgba(0,0,0,0.18));
+    background: #fff0;
+}
+
+/* TITLES */
+.hero-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 12;
+    text-align: center;
+    width: 660px;
+    max-width: 95vw;
+}
+
+.hero-title {
+    font-size: clamp(22px, 5vw, 37px);
+    color: #fff;
+    text-shadow: 0 4px 16px #0003;
+    margin: 0 0 18px 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.hero-desc {
+    font-size: clamp(13px, 3.3vw, 20px);
+    color: #ffeaea;
+    margin-bottom: 26px;
+    margin-top: 0;
+    text-shadow: 0 2px 8px #0005;
+    line-height: 1.6;
+}
+
+/* AI advisor */
+/* ==== AI advisor (ویرایش‌شده) ==== */
+/* ۱) باکس کشیده‌تر شود و چیدمان عمودی داشته باشد */
+.ai-advisor {
+    display: flex;
+    flex-direction: column; /* بچینیم ورودی و دکمه را روی هم */
+    align-items: stretch; /* تا تمام عرض باکس را پر کنند */
+    background: #fff;
+    padding: 12px 16px; /* کمی padding بیشتر برای بزرگ‌تر شدن */
+    border-radius: 13px;
+    box-shadow: 0 3px 12px #0001;
+    gap: 8px; /* فاصله بین ورودی و دکمه */
+    max-width: 360px; /* عرض حداکثری (می‌توانید بنا به سلیقه تغییر دهید) */
+    width: 100%; /* در صورت فضای کافی، تمام عرض را بگیرد */
+    box-sizing: border-box;
+}
+
+    /* ۲) ورودی کمی کشیده‌تر شود */
+    .ai-advisor #ai-question {
+        width: 100%; /* تمام عرض والد */
+        padding: 8px 12px; /* padding بزرگ‌تر برای ظاهر بهتر */
+        border-radius: 8px;
+        border: 1px solid #ddd; /* کمی تیرگی بیشتر برای وضوح بیشتر */
+        font-size: 15px;
+        background: #f9f9f9;
+        box-sizing: border-box;
+    }
+
+    /* ۳) دکمه زیر ورودی بیاید و سبز شود */
+    .ai-advisor #ai-ask {
+        width: 100%; /* تمام عرض والد */
+        margin: 0; /* حاشیه قبلی را حذف می‌کنیم */
+        padding: 10px 0; /* ارتفاع مناسب‌تر */
+        background: #28a745; /* رنگ سبز (می‌توانید کد رنگ دلخواه خودتان را جایگزین کنید) */
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-family: inherit;
+        cursor: pointer;
+        text-align: center;
+        transition: background .2s;
+        box-sizing: border-box;
+    }
+
+        .ai-advisor #ai-ask:hover {
+            background: #218838; /* هور حالت تیره‌تر سبز */
+        }
+
+    /* ۴) متن پاسخ در زیر دکمه جلوه‌ای شکیل‌تر داشته باشد */
+    .ai-advisor #ai-response {
+        color: #555;
+        font-size: 14px;
+        text-align: right;
+        min-height: 18px;
+    }
+
+/* ===== ریسپانسیو برای موبایل ===== */
+@media (max-width: 700px) {
+    .ai-advisor {
+        max-width: 90vw; /* در موبایل تقریباً تمام عرض صفحه */
+        padding: 10px 12px;
+    }
+
+        .ai-advisor #ai-question {
+            font-size: 14px;
+            padding: 7px 10px;
+        }
+
+        .ai-advisor #ai-ask {
+            font-size: 14px;
+            padding: 9px 0;
+        }
+}
+
+
+/* سبد خرید */
+.cart-box {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: #ff6e8c;
+    color: #fff;
+    padding: 7px 16px 7px 12px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 12;
+    box-shadow: 0 3px 12px #0002;
+    gap: 7px;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+    .cart-box:hover {
+        background: #ff3460;
+    }
+
+.cart-icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* ===== محصولات و دسته‌بندی ===== */
+.products-section {
+    padding: 44px 0 10px 0;
+    background: #fff;
+    margin: 24px auto 12px auto;
+    max-width: 1080px;
+    border-radius: 22px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.09);
+}
+
+    .products-section h2, #categories h2 {
+        margin-top: 0;
+        text-align: center;
+        color: #ff3460;
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+/* ===== تنظیم گرید برای #bestseller-products ===== */
+/*/* ===== تنظیم گرید برای بخش پرفروش‌ها ===== */
+#bestseller-products {
+    /* حالت دسکتاپ: گرید ۵ ستونه در دو ردیف */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: auto; /* ارتفاع هر ردیف خودکار */
+    gap: 16px; /* فاصلهٔ بین کارت‌ها در دسکتاپ */
+}
+
+/* ===== حالت موبایل (عرض کمتر از 700px): ماتریس ۲×۲ روی .bestseller-track ===== */
+@media (max-width: 700px) {
+    #bestseller-products {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* دو ستون */
+        grid-auto-rows: auto; /* هر ردیف با محتوا هماهنگ باشد */
+        gap: 12px; /* فاصلهٔ بین کارت‌ها */
+        padding: 0; /* اگر لازم است حاشیه را صفر کنید */
+    }
+
+        /* هر کارت باید تمام عرض ستون را بگیرد */
+        #bestseller-products .square-card {
+            width: 100%;
+            box-sizing: border-box;
+        }
+}
+
+/* اگر لازم دارید، می‌توانید ارتفاع خودکار کارت‌ها را هم کنترل کنید؛
+   اما معمولاً کافی‌ست همین تعریف‌ها باشد. */
+
+
+/* ===== دسته‌بندی ===== */
+#categories {
+    margin: 30px auto 20px auto;
+    max-width: 1150px;
+    padding: 12px;
+}
+
+.category-section {
+    margin: 36px 0 12px 0;
+}
+
+    .category-section h3 {
+        color: #222;
+        font-size: 21px;
+        margin-bottom: 18px;
+    }
+
+.categories-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 34px;
+    justify-content: center;
+}
+
+.category-card {
+    background: linear-gradient(145deg, #f3f3fa 60%, #fff2f7 100%);
+    border-radius: 19px;
+    box-shadow: 0 2px 7px rgba(46,140,255,0.06);
+    padding: 17px 23px;
+    width: 126px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .16s;
+    text-decoration: none;
+}
+
+    .category-card:hover {
+        transform: translateY(-7px) scale(1.045);
+        box-shadow: 0 10px 25px rgba(46,140,255,0.11);
+        background: linear-gradient(145deg, #fff 55%, #f8e6f0 100%);
+    }
+
+    .category-card img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: contain;
+        background: #fff;
+        margin-bottom: 10px;
+    }
+
+    .category-card span {
+        display: block;
+        font-size: 17px;
+        color: #303034;
+        text-align: center;
+        margin-top: 12px;
+    }
+
+/* ===== FOOTER ===== */
+footer {
+    background: #23222c;
+    color: #eee;
+    margin-top: 54px;
+    padding: 28px 0 0 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url("/images/footer-bg.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+    footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(40, 0, 0, 0.67);
+        z-index: 0;
+    }
+
+.footer-content,
+.footer-bottom {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    padding: 0 34px;
+    flex-wrap: wrap;
+}
+
+    .footer-content div {
+        flex: 1 1 300px;
+        min-width: 210px;
+    }
+
+    .footer-content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-content a {
+        color: #fff;
+        text-decoration: none;
+        transition: color .2s;
+    }
+
+        .footer-content a:hover {
+            color: #ffd6e1;
+        }
+
+.footer-bottom {
+    text-align: center;
+    background: rgba(27, 27, 36, 0.74);
+    padding: 12px 0;
+    margin-top: 18px;
+    border-radius: 0 0 16px 16px;
+    font-size: 14px;
+    color: #f6c8d2;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 1200px) {
+    .hero-center {
+        width: 95vw;
+        left: 50%;
+    }
+}
+
+@media (max-width: 950px) {
+    .hero-title {
+        font-size: 20px;
+    }
+
+    .site-logo-large {
+        width: 52px;
+    }
+
+    .main-nav ul {
+        padding: 6px 8px;
+        gap: 13px;
+    }
+
+    .cart-box {
+        left: 6px;
+        top: 13px;
+    }
+
+    .hero-center {
+        width: 95vw;
+    }
+}
+
+@media (max-width: 700px) {
+    #hamburger {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: auto;
+        transform: none;
+        background: rgba(0,0,0,0.17);
+        padding: 4px 12px;
+        border-radius: 12px;
+    }
+
+        .main-nav ul {
+            flex-direction: row;
+            gap: 12px;
+            background: transparent;
+            padding: 0;
+        }
+
+    .site-logo-large {
+        width: 32px;
+    }
+
+    .hero-center {
+        top: 57%;
+        left: 56%;
+        width: 99vw;
+        padding: 0 4vw;
+    }
+
+    .hero-title {
+        font-size: 13px;
+    }
+
+    .hero-desc {
+        font-size: 9.5px;
+    }
+
+    #ai-question {
+        width: 95px;
+        font-size: 12px;
+    }
+
+    #ai-ask {
+        font-size: 11px;
+        padding: 3px 9px;
+    }
+}
+
+@media (max-width: 600px) {
+    .products-grid, .categories-row {
+        gap: 20px;
+    }
+
+    .category-card, .product-card {
+        width: 120px;
+        padding: 14px 10px;
+    }
+
+        .category-card img, .product-card img {
+            width: 64px;
+            height: 64px;
+        }
+
+        .category-card span, .product-card span {
+            font-size: 15px;
+        }
+
+    .footer-content {
+        padding: 0 7vw;
+    }
+
+    .hero-center {
+        left: 54%;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 22px;
+    }
+}
+
+/* --- صفحات دسته / کارت مربع --- */
+.category-hero-title h1 {
+    font-size: 32px;
+    color: #fff;
+    background: #fcd9c7;
+    padding: 6px 24px;
+    border-radius: 999px;
+    display: inline-block;
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+
+.products-grid-square {
+    max-width: 1500px;
+    margin: 40px auto 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
+    gap: 56px 38px;
+    padding: 0 20px;
+}
+
+.square-card {
+    text-align: center;
+    position: relative;
+}
+
+    .square-card figure {
+        width: 100%;
+        aspect-ratio: 1/1;
+        background: #f2f3f7;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0 22px 0;
+        overflow: hidden;
+    }
+
+    .square-card img {
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+
+    .square-card h2 {
+        font-size: 20px;
+        color: #222;
+        margin: 0 0 8px 0;
+        line-height: 1.6;
+    }
+
+    .square-card .volume {
+        color: #a30035;
+        font-size: 19px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .square-card .price {
+        font-weight: bold;
+        font-size: 18px;
+        display: block;
+        margin-bottom: 18px;
+    }
+
+    .square-card .add-to-cart {
+        background: #ff6e8c;
+        color: #fff;
+        width: 60px;
+        height: 45px;
+        border: none;
+        border-radius: 12px;
+        font-size: 28px;
+        cursor: pointer;
+        transition: background .2s;
+    }
+
+        .square-card .add-to-cart:hover {
+            background: #ff3460;
+        }
+
+@media (max-width:780px) {
+    .products-grid-square {
+        gap: 40px 20px;
+    }
+
+    .square-card h2 {
+        font-size: 17px;
+    }
+
+    .square-card .price {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* فاصله کارت‌ها در محور افقی = 18px  →  calc(50% - 9px) */
+    .products-grid,
+    .categories-row {
+        gap: 18px 18px; /* عمودی افقی */
+        justify-content: center; /* وسط‌چین امن */
+    }
+
+    /* هر کارت دقیقاً نصف عرض موبایل منهای نصف gap */
+    .category-card,
+    .product-card {
+        flex: 0 0 calc(50% - 9px);
+        max-width: calc(50% - 9px);
+        box-sizing: border-box; /* پدینگ داخل خود کارت حساب شود */
+        padding: 12px 6px; /* قاب کوچیک‌تر ولی نه خیلی کم */
+    }
+
+        /* دایرهٔ عکس بزرگ؛ از کارت بیرون نمی‌زند */
+        .category-card img,
+        .product-card img {
+            width: 90px;
+            height: 90px;
+        }
+
+        /* متن زیر عکس کمی کوچیک تا جا نشه دو خطِ بدقواره */
+        .category-card span,
+        .product-card span {
+            font-size: 14px;
+        }
+}
+
+.global-banner, #global-banner {
+    background: #ffeaea;
+    color: #6a1345;
+    font-size: 15px;
+    text-align: center;
+    padding: 7px 9px;
+    border-radius: 0 0 16px 16px;
+    border-bottom: 1.5px solid #ffd6e1;
+    z-index: 9999;
+    position: relative;
+    line-height: 2;
+}
+
+    .global-banner a {
+        color: #c2307c;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+@media (max-width: 700px) {
+    .global-banner, #global-banner {
+        font-size: 12.7px;
+        padding: 6px 2vw;
+        border-radius: 0 0 11px 11px;
+        line-height: 1.7;
+    }
+}
+
+/* ==== AI Popup ==== */
+/* باکس پاپاپ هوش مصنوعی */
+#ai-popup {
+    position: fixed;
+    bottom: 22px;
+    right: 24px;
+    width: 420px;
+    max-width: 94vw;
+    min-width: 190px;
+    background: rgba(255, 248, 252, 0.93); /* سفید-صورتی با شفافیت */
+    backdrop-filter: blur(3px); /* افکت بلوری نرم */
+    border: 2px solid var(--ai-pink);
+    border-radius: 18px;
+    box-shadow: 0 10px 32px rgba(0,0,0,.13);
+    z-index: 10000;
+    font-family: 'Vazirmatn',sans-serif;
+    overflow: hidden;
+    animation: popupSlide .5s cubic-bezier(.17,.67,.32,1.2);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transition: width .2s cubic-bezier(.67,.1,.9,1.2);
+}
+
+/* انیمیشن ورود */
+@keyframes popupSlide {
+    0% {
+        transform: translateY(35px) scale(.93);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1
+    }
+}
+
+#ai-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--ai-pink-dark);
+    cursor: pointer;
+    transition: transform .18s;
+    z-index: 2;
+}
+
+    #ai-close:hover {
+        transform: rotate(90deg);
+    }
+
+.ai-header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 15px;
+    color: #3c3c3c;
+    padding: 15px 22px 5px 12px;
+}
+
+.wave-hand {
+    font-size: 23px;
+    display: inline-block;
+    animation: waveHand 1.4s ease-in-out infinite;
+}
+
+@keyframes waveHand {
+    0%,100% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(15deg);
+    }
+
+    40% {
+        transform: rotate(-11deg);
+    }
+
+    60% {
+        transform: rotate(15deg);
+    }
+
+    80% {
+        transform: rotate(-10deg);
+    }
+}
+
+.ai-media {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 12px 0;
+}
+
+    .ai-media img,
+    .ai-media video {
+        width: 138px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px #0002;
+        background: #fff;
+    }
+
+/* ورودی و دکمه */
+.ai-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px 18px 16px;
+}
+
+#ai-question {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 10px;
+    border: 1px solid #e8e8e8;
+    border-radius: 11px;
+    background: #fff;
+}
+
+#ai-ask {
+    background: var(--ai-pink);
+    color: #fff;
+    border: none;
+    border-radius: 11px;
+    padding: 8px 0;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 2px;
+    font-family: inherit;
+    transition: background .16s;
+}
+
+    #ai-ask:hover {
+        background: var(--ai-pink-dark);
+    }
+
+.ai-response, #ai-response, #ai-response-pop {
+    min-height: 18px;
+    font-size: 13px;
+    color: #555;
+    margin-top: 3px;
+    overflow-y: auto; /* اضافه شد */
+    max-height: 180px; /* اضافه شد، هر عددی دوست داشتی */
+    padding-right: 4px; /* جا برای اسکرول‌بار */
+    white-space: pre-wrap; /* حفظ خط‌بعدی‌ها */
+}
+
+    /* اسکرول‌بار باریک و شیک فقط برای کروم/وب‌کیت */
+    .ai-response::-webkit-scrollbar, #ai-response::-webkit-scrollbar, #ai-response-pop::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .ai-response::-webkit-scrollbar-thumb, #ai-response::-webkit-scrollbar-thumb, #ai-response-pop::-webkit-scrollbar-thumb {
+        background: #d3d3d3;
+        border-radius: 8px;
+    }
+
+        .ai-response::-webkit-scrollbar-thumb:hover, #ai-response::-webkit-scrollbar-thumb:hover, #ai-response-pop::-webkit-scrollbar-thumb:hover {
+            background: #b8b8b8;
+        }
+
+@media (max-width: 650px) {
+    .ai-response, #ai-response, #ai-response-pop {
+        max-height: 120px;
+    }
+}
+
+/* -------- رسپانسیو مخصوص موبایل: کل باکس نصف صفحه -------- */
+@media (max-width: 650px) {
+    #ai-popup {
+        width: 46vw !important;
+        min-width: 220px !important;
+        max-width: 180px !important;
+        background: #fff !important;
+        box-shadow: 0 8px 26px 0 #0004 !important;
+        border-radius: 15px !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    .ai-header {
+        font-size: 13.5px !important;
+        padding: 10px 8px 2px 4px !important;
+    }
+
+    .ai-media img, .ai-media video {
+        width: 100% !important;
+        max-width: 120px !important;
+        height: auto !important;
+        border-radius: 8px !important;
+    }
+
+    .ai-body {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 7px !important;
+        padding: 0 7px 14px 7px !important;
+        min-height: 90px !important; /* اضافه برای جا شدن دکمه */
+    }
+
+    #ai-question {
+        font-size: 13px !important;
+        border-radius: 8px !important;
+        padding: 7px 7px !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #ai-ask {
+        font-size: 14px !important;
+        padding: 7px 0 !important;
+        width: 100% !important;
+        display: block !important;
+        margin: 0 !important;
+        border-radius: 8px !important;
+        background: #ff6e8c !important;
+        color: #fff !important;
+        border: none !important;
+        box-shadow: 0 2px 6px #ffd6e144 !important;
+        transition: background .2s !important;
+    }
+
+        #ai-ask:hover {
+            background: #ff3460 !important;
+        }
+}
+.ai-response, #ai-response, #ai-response-pop {
+    min-height: 18px;
+    font-size: 13px;
+    color: #555;
+    margin-top: 3px;
+    overflow-y: auto; /* اضافه شد */
+    max-height: 180px; /* اضافه شد، هر عددی دوست داشتی */
+    padding-right: 4px; /* جا برای اسکرول‌بار */
+    white-space: pre-wrap; /* حفظ خط‌بعدی‌ها */
+}
+
+/* ==== کارت محصول داخل چت (مینیمال) ==== */
+.chat-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: #fff;
+    border-radius: 13px;
+    box-shadow: 0 2px 10px #0001;
+    padding: 8px 14px 8px 10px;
+    margin: 7px 0;
+    border: 1px solid #f7c9da;
+    font-size: 14px;
+    position: relative;
+    transition: box-shadow .14s, border-color .14s;
+}
+
+    .chat-card img {
+        width: 46px;
+        height: 46px;
+        object-fit: contain;
+        border-radius: 8px;
+        background: #f7f7fa;
+        border: 1px solid #eee;
+    }
+
+    .chat-card .info {
+        flex: 1 1 auto;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .chat-card .title {
+        color: #b02460;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.4;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+
+    .chat-card .price {
+        color: #535;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .chat-card .add-to-cart {
+        background: #ff6e8c;
+        color: #fff;
+        border: none;
+        border-radius: 9px;
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+        margin-left: 0;
+        transition: background .18s;
+    }
+
+        .chat-card .add-to-cart:hover {
+            background: #ff3460;
+        }
+
+@media (max-width: 500px) {
+    .chat-card {
+        font-size: 12px;
+        padding: 7px 7px 7px 6px;
+        gap: 8px;
+    }
+
+        .chat-card img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .chat-card .title {
+            font-size: 12px;
+            max-width: 100px;
+        }
+
+        .chat-card .add-to-cart {
+            width: 29px;
+            height: 29px;
+            font-size: 16px;
+        }
+}
+#chat .msg {
+    direction: rtl; /* همهٔ پیام‌ها راست به چپ */
+}
+/* ====== AI Chat History ====== */
+.chat-history {
+    max-height: 280px; /* ارتفاع بزرگ‌تر (اسکرول) */
+    min-height: 90px;
+    overflow-y: auto;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    background: #f8fafd;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #0000000d;
+}
+/* پیام کاربر (قرمز) */
+.msg-user {
+    text-align: right;
+    margin: 0 6px 9px 20px;
+}
+
+    .msg-user .bubble {
+        display: inline-block;
+        background: #ffefef;
+        color: #d60000;
+        padding: 6px 14px;
+        border-radius: 12px 12px 0 12px;
+        font-size: 15px;
+        box-shadow: 0 2px 5px #ffd1d1;
+    }
+/* پیام دستیار (آبی) */
+.msg-ai {
+    text-align: left;
+    margin: 0 20px 9px 6px;
+}
+
+    .msg-ai .bubble {
+        display: inline-block;
+        background: #e7f3ff;
+        color: #1687e6;
+        padding: 6px 14px;
+        border-radius: 12px 12px 12px 0;
+        font-size: 15px;
+        box-shadow: 0 2px 5px #c8e1ff;
+    }
+/* اینپوت و دکمه در یک ردیف */
+.ai-input-row {
+    display: flex;
+    gap: 6px;
+}
+
+    .ai-input-row input {
+        flex: 1 1 auto;
+    }
+
+    .ai-input-row button {
+        flex: 0 0 78px;
+    }
+/* کمی بزرگ‌تر کردن خود پاپ‌آپ */
+#ai-popup {
+    width: 360px !important; /* قبلی ~330px بود */
+    right: 24px;
+    bottom: 28px;
+}
+/* === Fix for long inline-chat answer === */
+.hero-header { /* اجازه بده محتوا بیرون هدر دیده شود */
+    overflow: visible;
+}
+/* خود جواب را محدود و اسکرول‌دار می‌کنیم تا خیلی کش نیاید */
+.ai-advisor #ai-response {
+    max-height: 160px; /* هر عددی که دوست داری */
+    overflow-y: auto; /* اسکرول عمودی */
+}
+/* ==== فیکس ریسپانسیو دکمه و اینپوت چت پاپ‌آپ در موبایل ==== */
+@media (max-width: 600px) {
+    .ai-input-row {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+        .ai-input-row input,
+        .ai-input-row button {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            font-size: 15px !important;
+        }
+}
+

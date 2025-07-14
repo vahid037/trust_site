@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>پرداخت ناموفق</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/pay-status.css">
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon" style="background:var(--error)">✖</div>
+        <h1 class="title">پرداخت انجام نشد!</h1>
+        <p class="subtitle">
+            متأسفانه تراکنش با خطا مواجه شد.<br>
+            تا <span id="counter">10</span> ثانیه دیگر به صفحه اصلی بازمی‌گردید.
+        </p>
+        <button id="back-btn">بازگشت به صفحه اصلی</button>
+    </div>
+
+    <script src="js/pay-status.js"></script>
+</body>
+</html>
