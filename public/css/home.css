@@ -1156,4 +1156,7 @@ footer {
             font-size: 15px !important;
         }
 }
+html {
+    scroll-behavior: smooth;
+}
 

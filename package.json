@@ -12,5 +12,13 @@
     "express": "^5.1.0",
     "mongoose": "^8.16.1",
     "openai": "^4.104.0"
-  }
+  },
+  "description": "",
+  "main": "db.js",
+  "devDependencies": {
+    "cheerio": "^1.1.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

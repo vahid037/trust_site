@@ -12,10 +12,10 @@
 
         if (remaining <= 0) {
             clearInterval(interval);
-            location.href = 'home.html';   // صفحه اصلی
+            location.href = '/';   // صفحه اصلی
         }
     }, 1000);
 
     // اگر کاربر روی دکمه کلیک کرد قبل از ۱۰ ثانیه
-    document.getElementById('back-btn').onclick = () => location.href = 'home.html';
+    document.getElementById('back-btn').onclick = () => location.href = '/';
 })();

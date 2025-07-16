@@ -1,27 +1,26 @@
-﻿<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8" />
-    <title>سبد خرید | فروشگاه تراست</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="fa" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <title>سبد خرید | فروشگاه تراست</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- استایل‌ها: اول مدرن بعد اصلی -->
-    <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/cart.css" />
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/cart.css">
     <script src="js/cart-core.js"></script>
-</head>
-<body>
+
+
 
     <!-- هدر سایت -->
     <header class="hero-header cart-hero-header">
         <div class="hero-bg hero-cart-bg">
-            <img src="images/cart-banner.png" alt="بنر سبد خرید" class="hero-img" loading="eager" />
+            <img src="images/cart-banner.png" alt="بنر سبد خرید" class="hero-img" loading="eager">
             <div class="hero-gradient"></div>
         </div>
         <div class="hero-content">
             <div class="hero-row">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="home.html">بازگشت به صفحهٔ اصلی</a></li>
+                        <li><a href="/">بازگشت به صفحهٔ اصلی</a></li>
                     </ul>
                 </nav>
             </div>
@@ -41,7 +40,7 @@
         <div class="cart-summary">
             <span>جمع کل:</span>
             <strong id="cart-total">۰ تومان</strong>
-            <button class="pay-btn" disabled>ادامه و پرداخت</button>
+            <button class="pay-btn" disabled="">ادامه و پرداخت</button>
         </div>
     </main>
 
@@ -59,7 +58,7 @@
             </div>
             <div>
                 <strong>ارتباط با ما:</strong>
-                <p>ایمیل: ayaitech2023@gmail.com</p>
+                <p>ایمیل: <span class="obfuscated-email">ayaitech2023 [at] gmail [dot] com</span></p>
                 <p>تلفن: 09120337520</p>
             </div>
         </div>
@@ -80,9 +79,9 @@
 
             if (!items.length) {
                 container.innerHTML = `<div class="cart-empty">
-                <img src="images/empty-cart.svg" alt="سبد خالی" style="width:100px;opacity:.5;margin-bottom:18px;">
+               <img src="images/cart-icon.svg" alt="سبد خالی" style="width:100px;opacity:.5;margin-bottom:18px;">
                 <p>سبد خرید شما خالی است!</p>
-                <a href="home.html" class="back-to-shop">رفتن به فروشگاه</a>
+                <a href="/" class="back-to-shop">رفتن به فروشگاه</a>
               </div>`;
                 totalEl.textContent = "۰ تومان";
                 payBtn.disabled = true;
@@ -141,5 +140,6 @@
         });
     </script>
 
-</body>
-</html>
+
+
+</body></html>

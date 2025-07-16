@@ -173,7 +173,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     /* ---------- ۵) سایر initialization های فروشگاه ---------- */
     loadBestsellers();
-    loadCategories();
     updateCartCount();
     setupAddToCartButtons();
     setupCartButton();
@@ -310,18 +309,18 @@ function updateCartCount() {
 }
 
 function setupAddToCartButtons() {
-    const root = document.getElementById('bestseller-products');
-    if (!root) return;
+    /* اگر قبلاً یک لیسنر جهانی ثبت شده، دوباره نساز تا دوبار اضافه نشود */
+    if (document.body.dataset.cartBound) return;
+    document.body.dataset.cartBound = "1";
 
-    /* فقط یک‌بار لیسنر روی ظرف گرید */
-    root.addEventListener('click', e => {
+    document.body.addEventListener('click', e => {
         const btn = e.target.closest('.add-to-cart');
-        if (!btn) return;                       // روی چیز دیگری کلیک شده
+        if (!btn) return;                 // روی چیز دیگری کلیک شده
 
         const card = btn.closest('.square-card');
-        if (!card) return;
+        if (!card) return;                // دکمه داخل کارت نیست
 
-        /* داده‌ها را از data-attributes می‌خوانیم */
+        // داده‌ها را از data-attributes می‌خوانیم
         const id = card.dataset.id;
         const name = card.dataset.name;
         const price = Number(card.dataset.price || 0);
@@ -329,9 +328,9 @@ function setupAddToCartButtons() {
 
         addToCart({ id, name, price, img });
 
-        /* انیمیشن کوچک تأیید */
+        // انیمیشن تأیید کوچک
         btn.textContent = '✓';
-        setTimeout(() => btn.textContent = '+', 1000);
+        setTimeout(() => (btn.textContent = '+'), 1000);
     });
 }
 

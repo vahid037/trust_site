@@ -5,7 +5,7 @@
  * <footer> … </footer>
  * همهٔ فایل‌های HTML در شاخهٔ جاری.
  *
- * - اگر نام فایل home.html باشد، فوتر همراه با اینماد درج می‌شود.
+ * - اگر نام فایل / باشد، فوتر همراه با اینماد درج می‌شود.
  * - برای بقیهٔ فایل‌های HTML، فوتر بدون اینماد درج می‌شود.
  *
  * نحوهٔ اجرا:
@@ -44,7 +44,7 @@ const footerWithoutEnamad = `
 </footer>
 `.trim();
 
-// ====== 2) فوتر با اینماد (فقط برای home.html) ======
+// ====== 2) فوتر با اینماد (فقط برای /) ======
 const footerWithEnamad = `
 <footer id="contact">
     <div class="footer-content">
@@ -86,8 +86,8 @@ function replaceFooterInFile(filePath) {
     // 1. خواندن کل محتویات فایل
     let content = fs.readFileSync(filePath, 'utf8');
 
-    // 2. تعیین این‌که آیا این فایل home.html است یا خیر
-    const isHome = path.basename(filePath).toLowerCase() === 'home.html';
+    // 2. تعیین این‌که آیا این فایل / است یا خیر
+    const isHome = path.basename(filePath).toLowerCase() === '/';
 
     // 3. انتخاب فوتر مناسب
     const newFooter = isHome ? footerWithEnamad : footerWithoutEnamad;

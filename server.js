@@ -191,12 +191,19 @@ app.get('/api/zibal/callback', async (req, res) => {
 });
 
 
-/* ==========  صفحات استاتیک  ========== */
-app.get('/', (_, res) => res.sendFile(path.join(__dirname, 'public', 'home.html')));
+// صفحه اصلی جدید
+app.get('/', (_, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+
+// اگر کسی با home.html بیاد، دائمی به / ریدایرکت شه (برای SEO و بوکمارک‌ها)
+app.get('/home.html', (req, res) => res.redirect(301, '/'));
+
+// سایر صفحات
 app.get('/cart', (_, res) => res.sendFile(path.join(__dirname, 'public', 'cart.html')));
 app.get('/checkout', (_, res) => res.sendFile(path.join(__dirname, 'public', 'checkout.html')));
-app.get('/product/:id', (_, res) => res.sendFile(path.join(__dirname, 'public', 'home.html')));
-app.get('/category/:cat', (_, res) => res.sendFile(path.join(__dirname, 'public', 'home.html')));
+
+// اگر product/:id یا category/:cat زدی، محتوای صفحه اصلی رو بده (یا بعداً داینامیک کن)
+app.get('/product/:id', (_, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/category/:cat', (_, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
 /* ==========  اجرا  ========== */
 const PORT = process.env.PORT || 3001;
