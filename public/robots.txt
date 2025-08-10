@@ -1,0 +1,8 @@
+# ===== robots.txt for trustshopi.com =====
+User-agent: *
+Disallow: /cart                 # صفحه سبد خرید
+Disallow: /checkout             # صفحه تسویه‌حساب
+Disallow: /api/                 # Endpointهای بک‑اند
+Allow: /
+
+Sitemap: https://trustshopi.com/sitemap.xml

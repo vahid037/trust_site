@@ -1,0 +1,72 @@
+<html lang="fa" dir="rtl"><head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEQM3S93Q9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CEQM3S93Q9');
+  </script>
+</head><body>﻿
+
+
+    <meta charset="UTF-8">
+    <title>اطلاعات گیرنده | تراست‌شاپ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/checkout.css">
+    <script defer="" src="js/cart-core.js"></script>
+    <script defer="" src="js/checkout.js"></script>
+
+
+
+    <!-- هدر تصویری زیبا -->
+    <header class="hero">
+        <img src="images/checkout-hero.webp" alt="ارسال سریع تراست‌شاپ">
+        <div class="hero-title-wrap">
+            <h1>تکمیل اطلاعات گیرنده</h1>
+        </div>
+    </header>
+
+    <!-- فرم ورود اطلاعات -->
+    <main>
+        <form id="checkout-form" class="card" novalidate="">
+            <div class="field">
+                <label for="fullName">نام و نام‌خانوادگی</label>
+                <input name="fullName" id="fullName" placeholder="مثلاً علی رضایی" required="">
+            </div>
+
+            <div class="field">
+                <label for="phone">شماره موبایل</label>
+                <input name="phone" id="phone" placeholder="09xx..." pattern="09\d{9}" required="">
+            </div>
+
+            <div class="field">
+                <label for="address">آدرس دقیق پستی</label>
+                <textarea name="address" id="address" rows="3" placeholder="شهر، محله، پلاک..." required=""></textarea>
+            </div>
+
+            <div class="fields-row">
+                <div class="field half">
+                    <label for="postalCode">کد پستی</label>
+                    <input name="postalCode" id="postalCode" placeholder="۱۰ رقمی" maxlength="10" pattern="\d{10}" required="">
+                </div>
+
+                <div class="field half">
+                    <label for="note">توضیحات (اختیاری)</label>
+                    <input name="note" id="note" placeholder="مثلاً زنگ نزنید">
+                </div>
+            </div>
+
+            <button type="submit" class="primary-btn">
+                ادامه و پرداخت
+            </button>
+
+            <p class="mini-note">
+                جمع مبلغ: <span id="order-total">۰</span> تومان
+            </p>
+        </form>
+    </main>
+
+
+
+</body></html>

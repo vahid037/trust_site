@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>خرید اینترنتی محصولات پوست و مو تراست | فروشگاه تخصصی TRUST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta Description (~150 chars, includes brand once) -->
+    <meta name="description" content="خرید آنلاین محصولات تخصصی مراقبت پوست، مو و بدن از تراست؛ کرم، سرم، شامپو، ضدآفتاب و کیت‌های درمانی با ارسال سریع، مشاوره رایگان و ضمانت اصالت.">
+
+    <!-- Optional keywords (کم‌اهمیت برای گوگل ولی نگه می‌داریم) -->
+    <meta name="keywords" content="تراست, مراقبت پوست, مراقبت مو, زیبایی, خرید آنلاین, کرم تراست, سرم مو, شامپو بدن, ضد آفتاب, محصولات اصل">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://trustshopi.com/">
+
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEQM3S93Q9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-CEQM3S93Q9');
+    </script>
+
+    <!-- Structured Data: WebSite + Organization -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://trustshopi.com/#website",
+              "url": "https://trustshopi.com/",
+              "name": "فروشگاه تخصصی پوست و مو تراست",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://trustshopi.com/?s={search_term_string}",
+                "query-input": "required name=search_term_string"
+              },
+              "inLanguage": "fa-IR"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://trustshopi.com/#organization",
+              "name": "تراست",
+              "url": "https://trustshopi.com/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://trustshopi.com/images/hero.webp"
+              }
+            }
+          ]
+        }
+    </script>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="hero-header">
+        <div class="hero-bg">
+            <img src="images/hero.webp" alt="محصولات تراست - مراقبت حرفه‌ای پوست و مو" class="hero-img" loading="eager" />
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-row">
+                <!-- منو سمت راست -->
+                <nav class="main-nav" aria-label="منوی اصلی">
+                    <ul>
+                        <li class="dropdown">
+                            <button class="dropbtn" aria-haspopup="true" aria-expanded="false">دسته‌بندی محصولات</button>
+                            <div class="dropdown-content">
+                                <a href="#skin-categories">مراقبت پوست</a>
+                                <a href="#hair-categories">مراقبت مو</a>
+                                <a href="#body-categories">مراقبت بدن</a>
+                            </div>
+                        </li>
+                        <li><a href="#bestsellers">پرفروش‌ها</a></li>
+                    </ul>
+                </nav>
+                <!-- لوگو سمت چپ -->
+            </div>
+            <div class="hero-center">
+                <h1 class="hero-title">
+                    محصولات تخصصی <strong>تراست</strong>
+                    <span style="font-family:Arial,sans-serif;">(TRUST)</span>
+                </h1>
+                <p class="hero-desc">
+                    بهترین راه برای مراقبت از پوست و موی شما؛ تضمین شادابی، زیبایی و اعتماد به نفس
+                </p>
+                <div class="ai-advisor">
+                    <input type="text" id="ai-question" placeholder="مشاوره رایگان با هوش مصنوعی..." aria-label="سوال خود را بپرسید">
+                    <button id="ai-ask" type="button">بپرس</button>
+                    <div id="ai-response" role="status" aria-live="polite"></div>
+                </div>
+            </div>
+            <div class="cart-box" onclick="window.location='/cart.html'" role="button" tabindex="0" aria-label="نمایش سبد خرید">
+                <span id="cart-count">0</span>
+                <img src="images/cart-icon.svg" alt="سبد خرید فروشگاه" class="cart-icon">
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content">
+        <!-- بخش محصولات پرفروش -->
+        <section id="bestsellers" class="products-section">
+            <h2>محصولات پرفروش</h2>
+            <div class="products-grid" id="bestseller-products">
+                <!-- محصولات پرفروش به صورت داینامیک میاد -->
+            </div>
+        </section>
+
+        <!-- دسته‌بندی محصولات -->
+        <section id="categories">
+            <h2>دسته‌بندی محصولات</h2>
+
+            <div class="category-section">
+                <h3>مراقبت پوست</h3>
+                <div class="categories-row" id="skin-categories">
+                    <a href="balm.html" class="category-card"><img src="images/بالم-لب-تراست.webp" alt="بالم لب تراست"><span>بالم لب تراست</span></a>
+                    <a href="creams.html" class="category-card"><img src="images/کرم-صورت-تراست.webp" alt="کرم صورت تراست"><span>کرم صورت تراست</span></a>
+                    <a href="pains.html" class="category-card"><img src="images/پن-شوینده-تراست.webp" alt="پن شوینده صورت"><span>پن شوینده صورت</span></a>
+                    <a href="soaps.html" class="category-card"><img src="images/صابون-زیبایی-تراست.webp" alt="صابون تراست"><span>صابون زیبایی تراست</span></a>
+                    <a href="cleansers.html" class="category-card"><img src="images/شوینده-صورت-تراست.webp" alt="شوینده صورت تراست"><span>پاک کننده صورت</span></a>
+                    <a href="anti-ackne.html" class="category-card"><img src="images/کیت-مراقبت-پوست-تراست.webp" alt="کیت آنتی آکنه تراست"><span>کیت آنتی آکنه تراست</span></a>
+                    <a href="serums.html" class="category-card"><img src="images/سرم-و-روغن-صورت-تراست.webp" alt="سرم و روغن صورت تراست"><span>سرم و روغن صورت تراست</span></a>
+                    <a href="eye-area.html" class="category-card"><img src="images/ناحیه-چشم-تراست.webp" alt="کرم دور چشم تراست"><span>کرم دور چشم تراست</span></a>
+                    <a href="face-mask.html" class="category-card"><img src="images/ماسک-صورت-تراست.webp" alt="ماسک صورت تراست"><span>ماسک صورت تراست</span></a>
+                    <a href="sunscreen.html" class="category-card"><img src="images/ضد-آفتاب-تراست.webp" alt="کرم ضد آفتاب تراست"><span>کرم ضد آفتاب تراست</span></a>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h3>مراقبت مو</h3>
+                <div class="categories-row" id="hair-categories">
+                    <a href="hair-oil.html" class="category-card"><img src="images/روغن-مو-تراست.webp" alt="روغن مو تراست"><span>روغن مو تراست</span></a>
+                    <a href="hair-serum.html" class="category-card"><img src="images/سرم-مو-تراست.webp" alt="سرم مو تراست"><span>سرم مو تراست</span></a>
+                    <a href="hair-tonics.html" class="category-card"><img src="images/تونیک-مو-تراست.webp" alt="تونیک مو تراست"><span>تونیک مو تراست</span></a>
+                    <a href="hair-mask.html" class="category-card"><img src="images/ماسک-مو-تراست.webp" alt="ماسک مو تراست"><span>ماسک مو تراست</span></a>
+                    <a href="hair-shampoo.html" class="category-card"><img src="images/شامپو-مو-تراست.webp" alt="شامپو مو تراست"><span>شامپو مو تراست</span></a>
+                    <a href="hair-kit.html" class="category-card"><img src="images/کیت-رویش-مو-تراست.webp" alt="کیت رویش مو تراست"><span>کیت رویش مو تراست</span></a>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h3>مراقبت بدن</h3>
+                <div class="categories-row" id="body-categories">
+                    <a href="handwashes.html" class="category-card"><img src="images/مایع-دستشویی-تراست.webp" alt="مایع دستشویی تراست"><span>مایع دستشویی تراست</span></a>
+                    <a href="mamroll.html" class="category-card"><img src="images/خوشبوکننده-بدن-تراست.webp" alt="خوشبوکننده بدن تراست"><span>خوشبوکننده بدن تراست</span></a>
+                    <a href="body-oil.html" class="category-card"><img src="images/روغن-و-لوسیون-بدن-تراست.webp" alt="روغن و لوسیون بدن تراست"><span>روغن و لوسیون بدن تراست</span></a>
+                    <a href="body-cream.html" class="category-card"><img src="images/کرم-بدن-تراست.webp" alt="کرم بدن تراست"><span>کرم بدن تراست</span></a>
+                    <a href="body-shampoo.html" class="category-card"><img src="images/شامپو-بدن-تراست.webp" alt="شامپو بدن تراست"><span>شامپو بدن تراست</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SEO CONTENT BLOCK (>= ~250 words visible) ===== -->
+        <section class="seo-content" data-ai="manual-seo">
+            <h2>راهنمای خرید محصولات مراقبت پوست، مو و بدن تراست</h2>
+            <p>
+                انتخاب محصول مراقبتی درست وقتی نتیجه می‌دهد که بر اساس نوع پوست و مو، سن، سبک زندگی و فصل انجام شود. توی این فروشگاه مجموعه‌ای از محصولات تخصصی <strong>تراست</strong> رو می‌بینی که دسته‌بندی شدن تا راحت‌تر پیدا کنی: از <a href="creams.html">کرم‌های صورت</a> و <a href="serums.html">سرم و روغن پوست</a> گرفته تا <a href="hair-serum.html">سرم مو</a>، <a href="hair-shampoo.html">شامپو مو</a> و محصولات بدن مثل <a href="body-cream.html">کرم بدن</a> یا <a href="body-shampoo.html">شامپو بدن</a>.
+            </p>
+            <p>
+                اگر پوست خشکی داری سراغ فرمول‌های آبرسان و تغذیه‌کننده برو؛ پوست چرب معمولاً با ترکیبات سبک و غیر کومدون‌زا بهتر کنار میاد. برای مراقبت مو، محصولاتی مثل سرم، تونیک و ماسک می‌تونن بعد از رنگ، دکلره یا حرارت زیاد به احیای تار مو کمک کنن. محصولات بدن—از مایع دستشویی تا لوسیون‌های نرم‌کننده—برای روتین روزانه ضروری هستن و مانع خشکی و خارش پوست می‌شن.
+            </p>
+            <p>
+                خرید آنلاین از تراست یعنی دسترسی مستقیم به محصولات اصل با تاریخ معتبر، ارسال سریع و امکان مشاوره قبل از خرید. هر صفحهٔ دسته، توضیحات و تصاویر دقیق محصول رو داره تا راحت مقایسه کنی و مناسب‌ترین گزینه رو برای زیبایی و سلامت پوست و مویت انتخاب کنی.
+            </p>
+            <h3>سوالات متداول</h3>
+            <ul>
+                <li><strong>از کجا بفهمم محصول مناسب نوع پوستم هست؟</strong> توضیحات هر محصول و برچسب مناسب پوست خشک، چرب یا حساس رو بررسی کن؛ در صورت تردید از بخش مشاوره استفاده کن.</li>
+                <li><strong>چه زمانی از سرم مو استفاده کنم؟</strong> بعد از شست‌وشو و روی موی نم‌دار یا خشک، بسته به نوع محصول؛ از مقدار کم شروع کن.</li>
+                <li><strong>اصالت محصولات تضمین می‌شود؟</strong> همهٔ کالاها مستقیماً از تامین‌کننده معتبر تراست تهیه و با ضمانت اصالت ارسال می‌شوند.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <strong>درباره ما:</strong>
+                <p>فروشگاه تخصصی محصولات مراقبت پوست، مو و بدن؛ کیفیت بالا، اصالت کالا و ارسال سریع به سراسر ایران.</p>
+            </div>
+            <div>
+                <strong>لینک‌های مهم:</strong>
+                <ul>
+                    <li><a href="/">خانه</a></li>
+                </ul>
+            </div>
+            <div>
+                <strong>ارتباط با ما:</strong>
+                <p>ایمیل: <span class="obfuscated-email">ayaitech2023 [at] gmail [dot] com</span></p>
+                <p>تلفن: <a href="tel:09121222020">09121222020</a></p>
+            </div>
+            <!-- بلوک اینماد -->
+            <div class="enamad-wrapper" style="text-align:center; margin-top:16px;">
+                <a referrerpolicy="origin" target="_blank"
+                   href="https://trustseal.enamad.ir/?id=617435&amp;Code=LGpfV3T9LBruU0KoBRlQ2CYbQKBJ6oiJ">
+                    <img referrerpolicy="origin"
+                         src="https://trustseal.enamad.ir/logo.aspx?id=617435&amp;Code=LGpfV3T9LBruU0KoBRlQ2CYbQKBJ6oiJ"
+                         alt="نماد اعتماد الکترونیکی"
+                         style="cursor:pointer; max-width:120px; height:auto;"
+                         code="LGpfV3T9LBruU0KoBRlQ2CYbQKBJ6oiJ">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            کلیه حقوق متعلق به فروشگاه تراست‌شاپ است.
+        </div>
+    </footer>
+
+    <script src="js/cart-core.js"></script>
+    <script defer src="js/home.js"></script>
+</body>
+</html>

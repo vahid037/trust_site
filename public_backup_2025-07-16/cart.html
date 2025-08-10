@@ -1,0 +1,155 @@
+<html lang="fa" dir="rtl"><head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEQM3S93Q9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CEQM3S93Q9');
+  </script>
+</head><body>﻿
+
+
+    <meta charset="UTF-8">
+    <title>سبد خرید | فروشگاه تراست</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- استایل‌ها: اول مدرن بعد اصلی -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <script src="js/cart-core.js"></script>
+
+
+
+    <!-- هدر سایت -->
+    <header class="hero-header cart-hero-header">
+        <div class="hero-bg hero-cart-bg">
+            <img src="images/cart-banner.png" alt="بنر سبد خرید" class="hero-img" loading="eager">
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-row">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="home.html">بازگشت به صفحهٔ اصلی</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="cart-header-title">
+                <h1 class="hero-title">سبد خرید شما</h1>
+            </div>
+            <div class="cart-box" onclick="window.location='cart.html'">
+                <span id="cart-count">0</span>
+                <img src="images/cart-icon.svg" alt="سبد خرید فروشگاه" class="cart-icon">
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوای سبد خرید -->
+    <main class="cart-wrapper">
+        <section id="cart-items"></section>
+        <div class="cart-summary">
+            <span>جمع کل:</span>
+            <strong id="cart-total">۰ تومان</strong>
+            <button class="pay-btn" disabled="">ادامه و پرداخت</button>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <strong>درباره ما:</strong>
+                <p>فروشگاه تخصصی محصولات مراقبت پوست و مو، با بهترین کیفیت و ارسال سریع به سراسر ایران.</p>
+            </div>
+            <div>
+                <strong>لینک‌های مهم:</strong>
+                <ul>
+                    <li><a href="/">خانه</a></li>
+                </ul>
+            </div>
+            <div>
+                <strong>ارتباط با ما:</strong>
+                <p>ایمیل: ayaitech2023@gmail.com</p>
+                <p>تلفن: 09120337520</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            کلیه حقوق متعلق به فروشگاه تراست‌شاپ است.
+        </div>
+    </footer>
+
+    <!-- اسکریپت صفحه سبد خرید -->
+    <script>
+        // رندر محصولات سبد خرید
+        function renderCart() {
+            const items = getCart();
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const payBtn = document.querySelector('.pay-btn');  // کلاس به جای آیدی
+            let total = 0;
+
+            if (!items.length) {
+                container.innerHTML = `<div class="cart-empty">
+               <img src="images/cart-icon.svg" alt="سبد خالی" style="width:100px;opacity:.5;margin-bottom:18px;">
+                <p>سبد خرید شما خالی است!</p>
+                <a href="home.html" class="back-to-shop">رفتن به فروشگاه</a>
+              </div>`;
+                totalEl.textContent = "۰ تومان";
+                payBtn.disabled = true;
+                return;
+            }
+
+            container.innerHTML = '';
+            items.forEach(item => {
+                total += (item.price || 0) * (item.qty || 1);
+                const row = document.createElement('div');
+                row.className = 'cart-item';
+                row.innerHTML = `
+                <img src="images/${item.img}" alt="${item.name}">
+                <div class="item-info">
+                  <h3>${item.name}</h3>
+                  <span class="price-single">${(item.price || 0).toLocaleString()} تومان</span>
+                </div>
+                <div class="qty-box">
+                  <button class="qty-btn inc">+</button>
+                  <span>${item.qty}</span>
+                  <button class="qty-btn dec">-</button>
+                </div>
+                <span class="price-total">${((item.price || 0) * (item.qty || 1)).toLocaleString()} تومان</span>
+                <button class="remove-btn" title="حذف">&#10005;</button>
+              `;
+
+                // دکمه افزایش
+                row.querySelector('.inc').onclick = () => {
+                    setCartQty(item.id, item.qty + 1);
+                    renderCart();
+                };
+                // دکمه کاهش
+                row.querySelector('.dec').onclick = () => {
+                    setCartQty(item.id, item.qty - 1);
+                    renderCart();
+                };
+                // حذف کل محصول
+                row.querySelector('.remove-btn').onclick = () => {
+                    removeFromCart(item.id);
+                    renderCart();
+                };
+
+                container.appendChild(row);
+            });
+
+            totalEl.textContent = total.toLocaleString() + " تومان";
+            payBtn.disabled = false;
+        }
+
+        // دکمه پرداخت - بدون باگ کلیک دو مرحله‌ای!
+        // دکمه پرداخت
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+            updateCartBadge();
+            document.querySelector('.pay-btn').onclick = () => location.href = 'checkout.html';
+        });
+    </script>
+
+
+
+</body></html>

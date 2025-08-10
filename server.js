@@ -9,7 +9,7 @@ const fs = require('fs').promises;
 const crypto = require('crypto');
 const axios = require('axios');
 const OpenAI = require('openai');
-
+const ChatLog = require('./models/ChatLog');
 const { connect } = require('./db');          // اتصال به مونگو
 const Order = require('./models/Order'); // مدل سفارش
 
@@ -57,43 +57,40 @@ async function searchProducts(keyword) {
 /* ==========  API چت  ========== */
 app.post('/api/chat', async (req, res) => {
     try {
-        let { threadId, message } = req.body;
+        /* ---------- دادهٔ ورودی ---------- */
+        const { uid, threadId: incomingThread, message } = req.body;
+        if (!uid || !message) return res.status(400).json({ error: 'uid و message اجباری‌اند' });
+
+        /* ---------- ذخیره سؤال کاربر ---------- */
+        await ChatLog.create({ uid, threadId: incomingThread || 'pending', role: 'user', content: message });
+
+        /* ---------- فراخوانی OpenAI ---------- */
+        let threadId = incomingThread;
 
         if (!threadId) {
             const thread = await openai.beta.threads.create();
             threadId = thread.id;
         }
 
-        await openai.beta.threads.messages.create(threadId, {
-            role: 'user',
-            content: message,
-        });
+        await openai.beta.threads.messages.create(threadId, { role: 'user', content: message });
 
-        let run = await openai.beta.threads.runs.create(threadId, {
-            assistant_id: ASSISTANT_ID,
-        });
+        let run = await openai.beta.threads.runs.create(threadId, { assistant_id: ASSISTANT_ID });
 
+        /* همان حلقه polling قبلی */
         while (true) {
             if (['completed', 'failed', 'cancelled'].includes(run.status)) break;
 
             if (run.status === 'requires_action') {
                 const tool_outputs = [];
-
                 for (const call of run.required_action.submit_tool_outputs.tool_calls) {
                     const { name, arguments: argsJSON } = call.function;
                     const args = JSON.parse(argsJSON);
-
                     if (name === 'searchProducts') {
                         const output = await searchProducts(args.keyword);
                         tool_outputs.push({ tool_call_id: call.id, output });
                     }
                 }
-
-                run = await openai.beta.threads.runs.submitToolOutputs(
-                    threadId,
-                    run.id,
-                    { tool_outputs }
-                );
+                run = await openai.beta.threads.runs.submitToolOutputs(threadId, run.id, { tool_outputs });
             } else {
                 await new Promise(r => setTimeout(r, 1000));
                 run = await openai.beta.threads.runs.retrieve(threadId, run.id);
@@ -106,12 +103,16 @@ app.post('/api/chat', async (req, res) => {
         const msgs = await openai.beta.threads.messages.list(threadId, { limit: 1 });
         const reply = msgs.data[0].content[0].text.value;
 
+        /* ---------- ذخیره پاسخ دستیار ---------- */
+        await ChatLog.create({ uid, threadId, role: 'assistant', content: reply });
+
         res.json({ threadId, response: reply });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: err.message });
     }
 });
+
 
 /* ==========  API ثبت سفارش و دریافت لینک پرداخت  ========== */
 app.post('/api/orders', async (req, res) => {

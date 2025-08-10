@@ -9,7 +9,7 @@ function getOrCreateUid() {
     }
     return uid;
 }
-
+const uid = getOrCreateUid();   // ← یکتا برای هر مرورگر
 // ===== متغیر سراسری Thread =====
 let threadId = null; // شناسه‌ی Thread مشترک بین درخواست‌ها
 
@@ -39,7 +39,7 @@ async function askAI(question, historyEl) {
         const res = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ threadId, message: question }),
+            body: JSON.stringify({ uid, threadId, message: question }),
         });
 
         const data = await res.json();
@@ -94,7 +94,7 @@ function attachAIInline(btnId, inputId, respId) {
         fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ threadId, message: q }),
+            body: JSON.stringify({ uid, threadId, message: q }),
         })
             .then((r) => r.json())
             .then((data) => {
